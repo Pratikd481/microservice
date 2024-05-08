@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: my-skaffold-config
+build:
+  artifacts:
+    - image: pratikd481/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+  local:
+    push: false
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*.yaml

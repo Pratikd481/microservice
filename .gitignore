@@ -1,0 +1,8 @@
+# Ignore all files and directories
+auth/node_modules
+
+# Include necessary files and directories
+!dist/
+!src/
+!package.json
+!tsconfig.json
