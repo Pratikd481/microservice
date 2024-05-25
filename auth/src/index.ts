@@ -1,4 +1,8 @@
 import express, { Request, Response } from "express";
+import { currentUserRoute } from "./routes/current-user";
+import { signinRouter } from "./routes/signin";
+import { signoutRouter } from "./routes/signout";
+import { signuptRouter } from "./routes/signup";
 
 // Create Express app
 const app = express();
@@ -8,9 +12,10 @@ const PORT = process.env.PORT || 3008;
 app.use(express.json());
 
 // Simple route
-app.get("/", (req: Request, res: Response) => {
-    res.send("Hello, world!");
-});
+app.use(currentUserRoute);
+app.use(signinRouter);
+app.use(signoutRouter);
+app.use(signuptRouter);
 
 // Start the server
 app.listen(PORT, () => {

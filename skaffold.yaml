@@ -3,8 +3,10 @@ kind: Config
 metadata:
   name: my-skaffold-config
 build:
+  googleCloudBuild:
+    projectId: ticketing-dev-424311
   artifacts:
-    - image: pratikd481/auth
+    - image: asia-south2-docker.pkg.dev/ticketing-dev-424311/ticketing-dev/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -12,8 +14,9 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-  local:
-    push: false
+  tagPolicy:
+    envTemplate:
+      template: "latest"
 deploy:
   kubectl:
     manifests:

@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: auth
-          image: pratikd481/auth
+          image: asia-south2-docker.pkg.dev/ticketing-dev-424311/ticketing-dev/auth
           ports:
-            - containerPort: 3000
+            - containerPort: 3008
 ---
 apiVersion: v1
 kind: Service
@@ -28,4 +28,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000
+      targetPort: 3008
