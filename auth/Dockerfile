@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3008
 
 # Command to run the application
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
