@@ -1,41 +1,40 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import "express-async-errors";
+import { json } from "body-parser";
+import mongoose from "mongoose";
+
 import { currentUserRoute } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
-import { signuptRouter } from "./routes/signup";
+import { signupRouter } from "./routes/signup";
 import { errorHandler } from "./middlewares/error-handler";
 import { NotfoundError } from "./errors/not-found-error";
-import mongoose from "mongoose";
 
-// Create Express app
 const app = express();
-const PORT = process.env.PORT || 3008;
+app.use(json());
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
-// Simple route
 app.use(currentUserRoute);
 app.use(signinRouter);
 app.use(signoutRouter);
-app.use(signuptRouter);
+app.use(signupRouter);
 
-app.all("", async () => {
+app.all("*", async (req, res) => {
     throw new NotfoundError();
 });
 
 app.use(errorHandler);
+
 const start = async () => {
     try {
         await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
-        console.log("Connected to mongodb");
-    } catch (error) {
-        console.error(error);
+
+        console.log("Connected to MongoDb");
+    } catch (err) {
+        console.error(err);
     }
 
-    // Start the server
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+    app.listen(3008, () => {
+        console.log("Listening on port 3008!!!!!!!!");
     });
 };
 
