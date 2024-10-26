@@ -4,9 +4,9 @@ metadata:
   name: my-skaffold-config
 build:
   googleCloudBuild:
-    projectId: ticketing-dev-424311
+    projectId: tickting-dev-439418
   artifacts:
-    - image: asia-south2-docker.pkg.dev/ticketing-dev-424311/ticketing-dev/auth
+    - image: asia-east1-docker.pkg.dev/tickting-dev-439418/ticketing-dev/auth
       context: auth
       docker:
         dockerfile: Dockerfile
