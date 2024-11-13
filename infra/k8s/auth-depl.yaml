@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: asia-east1-docker.pkg.dev/tickting-dev-439418/ticketing-dev/auth
+          image: us-central1-docker.pkg.dev/tickting-dev-439418/ticketing-dev/auth
           ports:
             - containerPort: 3008
           env:
@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
-                  key: JWT_KYE
+                  key: JWT_KEY
 ---
 apiVersion: v1
 kind: Service

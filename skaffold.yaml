@@ -6,7 +6,7 @@ build:
   googleCloudBuild:
     projectId: tickting-dev-439418
   artifacts:
-    - image: asia-east1-docker.pkg.dev/tickting-dev-439418/ticketing-dev/auth
+    - image: us-central1-docker.pkg.dev/tickting-dev-439418/ticketing-dev/auth
       context: auth
       docker:
         dockerfile: Dockerfile
